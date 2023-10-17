@@ -1,0 +1,1 @@
+if there is any need of using "useContext" hook when props passing down to nested components becomes too messy and this "context" is only going to be used within this feature folder only

@@ -1,0 +1,93 @@
+*{
+  font-family: "Trirong", serif;
+}
+.gymTopClassShadow{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ color: #020507;
+ text-shadow: -1px -1px 0 gray;
+}
+
+
+.top {
+    position: relative; 
+    text-align: center; 
+    font-size: x-large;
+    font-weight: bold;
+  }
+
+.gymClassCard {
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  color: #091720;
+  background-position: center center;
+  text-align: center;
+  margin: 5px;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+  .gymClassCard:hover {
+    background-color: #f3d306 !important;
+    transform: scale(1.05); 
+    color: #091720;
+    font-size: 1.25rem; 
+    font-weight: bold;
+    
+  }
+ .gymClassCard:hover h2{
+   
+    font-size: xx-large;
+  }
+ 
+  /* .text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+   */
+   .classBtn {
+    background-color: transparent;
+    color: white;
+   border-radius: 5px;
+    border-bottom: 1px solid rgb(236, 233, 233);
+    border-left: 1px solid rgb(236, 233, 233);
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .classBtn:hover {
+    background-color: #edfb13;
+    color: black;
+    transform: scale(1.05);
+  }
+
+  .classInstructor h1{
+    font-weight: bold;
+  }
+  
+  .tableBtn {
+    display: inline-flex;
+   
+    text-align: center;
+    align-items: center;
+    padding:5px 10px;
+    display: inline-block;
+    margin: auto;
+    border-left: 2px solid #f3f72d; /* Left border color (red in this example) */
+    border-right: 2px solid #f3f04f; /* Right border color (green in this example) */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
