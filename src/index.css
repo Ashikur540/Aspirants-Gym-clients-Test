@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.primary-button {
+  @apply text-black px-10 py-1 rounded-md bg-[linear-gradient(156deg,_#FFEA0D_0%,_#CEAE0A_75.74%)] font-medium shadow-[3.82332px_8.58733px_18.8px_0px_rgba(49,42,2,0.25),1.20647px_2.70978px_2.96622px_0px_#FFF30E_inset,-1.20647px_-2.70978px_2.96622px_0px_#C4A60A_inset];
+}
+
+.secondary-button {
+  @apply inline-flex px-6 py-2 bg-inputBg rounded-md border-2 border-border_dark  justify-center items-center gap-2;
+}

@@ -2,13 +2,17 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
-    // colors: {
-    //   primary: '#edfb13',
-    //   shadow: '#505505',
-    //   more: '#575615',
-    //   more2: '#0f020b',
-    // },
+    extend: {
+      colors: {
+        yellow: '#edfb13',
+        inputBg: 'rgba(255, 255, 255, 0.10)',
+        cardBg: '#262525',
+        black: '#191919',
+        border_dark: '#5E5E5E',
+
+      },
+    },
+
   },
   //! Plugins...
   plugins: [require('daisyui')],
