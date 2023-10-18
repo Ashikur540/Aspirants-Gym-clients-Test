@@ -1,9 +1,11 @@
+
 import ExerciseTable from "./ExerciesTable"
+// import ExercisesWorkOut from "./ExercisesWorkOut"
 
 
 export const Exercise = () => {
   return (
-   <ExerciseTable></ExerciseTable>
-
+  //  <ExercisesWorkOut></ExercisesWorkOut>
+<ExerciseTable></ExerciseTable>
   )
 }

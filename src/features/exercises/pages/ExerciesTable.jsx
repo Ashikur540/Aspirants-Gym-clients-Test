@@ -2,6 +2,8 @@
 import { Button, Dropdown, Image, Menu, Space, Table } from 'antd';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import './ExerciesTable.css';
+import { AiOutlineEdit , AiOutlineDelete } from 'react-icons/ai';
+import { BiSolidDuplicate } from 'react-icons/bi';
 const columns = [
   {
     title: '',
@@ -20,6 +22,7 @@ const columns = [
     width: 80,
   },
   {
+    
     title: 'Exercises',
     dataIndex: 'exercises',
     key: 'exercises',
@@ -54,14 +57,15 @@ const columns = [
   {
     title: 'Action',
     key: 'action',
+    style:{},
     render: () => (
       <Space size="middle">
         <Dropdown
           overlay={(
             <Menu>
-              <Menu.Item key="1">Edit</Menu.Item>
-              <Menu.Item key="2">Duplicate</Menu.Item>
-              <Menu.Item key="3">Delete</Menu.Item>
+              <Menu.Item key="1"> <AiOutlineEdit></AiOutlineEdit> Edit</Menu.Item>
+              <Menu.Item key="2"><BiSolidDuplicate></BiSolidDuplicate> Duplicate</Menu.Item>
+              <Menu.Item key="3"><AiOutlineDelete></AiOutlineDelete> Delete</Menu.Item>
             </Menu>
           )}
         >
