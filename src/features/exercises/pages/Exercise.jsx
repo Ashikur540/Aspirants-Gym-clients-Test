@@ -1,7 +1,9 @@
+import ExerciseTable from "./ExerciesTable"
 
 
 export const Exercise = () => {
   return (
-    <div>Exercise</div>
+   <ExerciseTable></ExerciseTable>
+
   )
 }
