@@ -1,9 +1,11 @@
 import { Button, Dropdown, Menu, Space, Table } from 'antd';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { BiSolidDuplicate } from 'react-icons/bi';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
-const data = [
+const data1 = [
     {
         workOuts: (
           <>
@@ -70,11 +72,29 @@ const columns = [
 ];
 
 const ExercisesWorkOut = () => {
+  const [loading,setLoading] = useState(false) 
+  const [dataSource,setDataSource] = useState(data1) 
+  useEffect(()=>{
+    setLoading(true)
+    // fetch(data1)
+    // .then(res=>res.json())
+    // .then(data=>{
+    //   setDataSource(data)
+    // }).catch(err=>{
+    //   console.log(err)
+    // }).finally(()=>{
+    //   setLoading(false)
+    // })
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  },[])
   return (
     <Table
       columns={columns}
       rowSelection={{}}
-      dataSource={data}
+      dataSource={dataSource}
+      loading={loading}
     />
   );
 };
