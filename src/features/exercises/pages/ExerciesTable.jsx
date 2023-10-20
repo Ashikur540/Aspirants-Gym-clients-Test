@@ -206,6 +206,16 @@ const data1 = [
     custom: ''
   },
   {
+    key: 16,
+    img:'https://images.pexels.com/photos/4720268/pexels-photo-4720268.jpeg?auto=compress&cs=tinysrgb&w=300',
+    exercises: 'Plyo Kettlebell Pushups',
+    tag: "--",
+    primaryFocus: 'Quadeiceps',
+    category: 'strength',
+    mostRecent: "4 days",
+    custom: ''
+  },
+  {
     key: 13,
     img:'https://images.pexels.com/photos/4720268/pexels-photo-4720268.jpeg?auto=compress&cs=tinysrgb&w=300',
     exercises: 'Plyo Kettlebell Pushups',

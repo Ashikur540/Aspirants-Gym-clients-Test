@@ -76,6 +76,7 @@ const ExercisesWorkOut = () => {
   const [dataSource,setDataSource] = useState(data1) 
   useEffect(()=>{
     setLoading(true)
+    
     // fetch(data1)
     // .then(res=>res.json())
     // .then(data=>{
