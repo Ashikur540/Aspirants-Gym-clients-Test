@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 // use this as a container for Exercises features page
 

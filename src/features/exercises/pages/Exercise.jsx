@@ -1,13 +1,14 @@
-import Table from "../components/TableData";
+// import Table from "../components/TableData";
 import TopNav from "../components/TopNav";
 import SecondaryNav from "../components/secondaryNav";
+import ExerciesTable from "./ExerciesTable";
 
 export const Exercise = () => {
   return (
     <div className="min-h-screen bg-white text-black">
       <TopNav pageTitle="Exercise Library" />
       <SecondaryNav />
-      <Table />
+      <ExerciesTable></ExerciesTable>
     </div>
   );
 };
