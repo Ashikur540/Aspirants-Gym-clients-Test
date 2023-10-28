@@ -8,6 +8,7 @@ import About from "../pages/About";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import ExercisesWorkOut from "../features/exercises/pages/ExercisesWorkOut";
 
 
 export const router = createBrowserRouter([
@@ -43,6 +44,9 @@ export const router = createBrowserRouter([
     
     {
         path: '/dashboard/exercise', element: <Exercise />
+    },
+    {
+        path: '/dashboard/workOut', element: <ExercisesWorkOut></ExercisesWorkOut>
     },
 
 ])
