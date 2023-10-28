@@ -291,6 +291,7 @@
 // };
 
 import { Button, Dropdown, Image, Menu, Space } from "antd";
+import React from "react";
 import DataTable from "react-data-table-component";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { BiSolidDuplicate } from "react-icons/bi";
@@ -298,6 +299,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 const columns = [
+  
   {
     name: '', // Replace 'Image Column' with the desired column title
     selector: 'img',
@@ -512,9 +514,17 @@ const data = [
 ];
 
 function ExerciseTable() {
+  const [selectedRow, setSelectedRow] = React.useState(null);
+
+  const handleRowSelectionChange = (selectedRows) => {
+    setSelectedRow(selectedRows[0]);
+  };
   return <DataTable className="container mx-auto"
    columns={columns}
     data={data}
+    selectionMode="single"
+    selectableRows={[...Array(data.length).keys()]}
+    onRowSelectionChange={handleRowSelectionChange}
     pagination
      />;
 }
