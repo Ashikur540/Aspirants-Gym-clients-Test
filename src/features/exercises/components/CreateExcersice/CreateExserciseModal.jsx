@@ -46,6 +46,18 @@ const CreateExserciseModal = ({ setIsOpen }) => {
 
   const { TextArea } = Input;
 
+  // multiple select
+  const options = [];
+  for (let i = 10; i < 36; i++) {
+    options.push({
+      label: i.toString(36) + i,
+      value: i.toString(36) + i,
+    });
+  }
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
   // add link
   const [active, setActive] = useState(false);
 
@@ -58,40 +70,96 @@ const CreateExserciseModal = ({ setIsOpen }) => {
         />
         {/* left side */}
         <div className="w-[60%] overflow-y-scroll p-4">
-          <div className="flex items-center justify-between w-full mb-5">
-            <h1
-              contentEditable
-              className="outline-[1px] outline-[#c4c4c4]  py-2 px-2 text-[1.5rem] w-[80%] font-bold text-[#6800d8] border-none">
-              Hello World
-            </h1>
+          <div className="flex items-center justify-between w-full">
+            <TextArea
+              placeholder="Name your excerise"
+              rows={1}
+              className="w-[70%] border-none h-auto focus:border-[5px]  px-2 text-2xl font-bold text-[#6800d8] capitalize mb-4 hover:bg-gray-100 cursor-pointer placeholder:font-semibold"
+            />
+
             <BiSolidShareAlt
               size={38}
               color="#c4c4c4"
               className="hover:border hover:border-[#6800d8] rounded p-1 border border-white"
             />
           </div>
+
           {/* primary focus section */}
           <p className="text-gray-500 text-[0.7rem] mb-1">PRIMARY FOCUS</p>
-          <input
-            type="text"
-            className="w-full py-2 px-3 border-[1px] mb-5 border-[#c4c4c4] outline-none"
-            name=""
-            id=""
+          <Select
+            showSearch
+            id="select"
+            className="w-full cursor-pointer mb-5"
+            placeholder="Select a person"
+            optionFilterProp="children"
+            onChange={onChange}
+            onSearch={onSearch}
+            filterOption={filterOption}
+            options={[
+              {
+                value: "jack",
+                label: "Jack",
+              },
+              {
+                value: "lucy",
+                label: "Lucy",
+              },
+              {
+                value: "tom",
+                label: "Tom",
+              },
+            ]}
           />
+
           {/* TRACKING FIELD dragable section */}
           <p className="  text-gray-500 text-[0.7rem] mb-1">TRACKING FIELD</p>
           <div className=" bg-gray-200 p-4 rounded mb-5">
-            <select
-              name=""
-              id=""
-              className="w-full py-2 px-3 border-[1px] border-[#c4c4c4] cursor-pointer outline-none">
-              <option value="">Select a field</option>
-              <option value="">height</option>
-              <option value="">width</option>
-              <option value="">havit</option>
-              <option value="">Gain</option>
-            </select>
+            <Select
+              showSearch
+              id="select"
+              className="w-full cursor-pointer mb-7"
+              placeholder="Select a person"
+              optionFilterProp="children"
+              onChange={onChange}
+              onSearch={onSearch}
+              filterOption={filterOption}
+              options={[
+                {
+                  value: "jack",
+                  label: "Jack",
+                },
+                {
+                  value: "lucy",
+                  label: "Lucy",
+                },
+                {
+                  value: "tom",
+                  label: "Tom",
+                },
+              ]}
+            />
+            <p className="  text-gray-500 text-[0.7rem] mb-3 flex items-center gap-2">
+              TRACKING FIELDS
+              <AiFillQuestionCircle size={15} />
+            </p>
+            <div className="flex items-center justify-between w-full">
+              <div className="flex items-center gap-3">
+                <div className=" relative cursor-grab">
+                  <p className="py-2 px-4 bg-white rounded">Time</p>
+                  <RxCross1 className=" absolute top-[-20%] right-[-10%] bg-black text-white rounded-full p-[0.2rem]" />
+                </div>
+                <div className=" relative cursor-grab">
+                  <p className="py-2 px-4 bg-white rounded">Weight</p>
+                  <RxCross1 className=" absolute top-[-20%]  right-[-10%] bg-black text-white rounded-full p-[0.2rem]" />
+                </div>
+              </div>
+
+              <div className="py-2 px-6 bg-white rounded cursor-pointer">
+                <AiOutlinePlus />
+              </div>
+            </div>
           </div>
+
           {/* INSTRUCTIONS */}
           <p className="  text-gray-500 text-[0.7rem] mb-1">
             INSTRUCTIONS (Separate each step on a new line)
@@ -127,6 +195,28 @@ const CreateExserciseModal = ({ setIsOpen }) => {
             </p>
           </div>
 
+          {/* multiple selecting */}
+          <p className="  text-gray-500 text-[0.7rem] mb-1">TAGS</p>
+          <div className="mb-6">
+            <Space
+              style={{
+                width: "100%",
+              }}
+              direction="vertical">
+              <Select
+                mode="multiple"
+                allowClear
+                style={{
+                  width: "100%",
+                }}
+                placeholder="Please select"
+                defaultValue={["a10", "c12"]}
+                onChange={handleChange}
+                options={options}
+              />
+            </Space>
+          </div>
+
           {/* add link section */}
           <div
             className="flex items-center gap-4 font-bold text-[#5f5f5f]  mb-4 cursor-pointer  w-full"
@@ -137,25 +227,17 @@ const CreateExserciseModal = ({ setIsOpen }) => {
             />
             {active ? "Delete link" : "Add link"}
           </div>
-          {active && (
-            <input
-              type="text"
-              className="w-full py-2 px-3 border-[1px] mb-5 border-[#c4c4c4] outline-none"
-              name=""
-              id=""
-            />
-          )}
+
+          {active && <Input placeholder="Add link" />}
         </div>
 
         {/* right side */}
         <div className="w-[40%] bg-gray-100 p-4">
           <h3 className="mb-6 font-bold text-[1.2rem]">Media</h3>
           <p className=" text-gray-500 text-[0.7rem] mb-1">VIDEO</p>
-          <input
-            type="text"
-            className="w-full py-2 px-3 border-[1px] mb-5 border-[#c4c4c4] outline-none"
-            name=""
-            id=""
+          <Input
+            prefix={<AiOutlineLink color="#969696" size={20} />}
+            className="mb-3"
           />
 
           <label

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BiFilter, BiPlus } from "react-icons/bi";
 import CreateExserciseModal from "./CreateExcersice/CreateExserciseModal";
-import AddNewWorkout from "./AddNewWorkout/AddNewWorkout";
 const SecondaryNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -52,7 +51,7 @@ const SecondaryNav = () => {
         </div>
       </div>
 
-      {isOpen && <AddNewWorkout setIsOpen={setIsOpen} />}
+      {isOpen && <CreateExserciseModal setIsOpen={setIsOpen} />}
     </>
   );
 };
