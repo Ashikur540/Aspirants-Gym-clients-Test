@@ -7,10 +7,12 @@ import {
   AiFillFilter,
 } from "react-icons/ai";
 import { BiImages, BiSolidShareAlt, BiSearch } from "react-icons/bi";
-import { FiVideo } from "react-icons/fi";
+import { MdKeyboardArrowUp, MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { FiChevronDown, FiVideo } from "react-icons/fi";
 import { RxCross1, RxCross2 } from "react-icons/rx";
 import { message, Upload } from "antd";
 const { Dragger } = Upload;
+import Image from "../../../../assets/images.png";
 
 const AddNewWorkout = ({ setIsOpen }) => {
   const onChange = (value) => {
@@ -19,6 +21,12 @@ const AddNewWorkout = ({ setIsOpen }) => {
   const onSearch = (value) => {
     console.log("search:", value);
   };
+
+  // all filter state here
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
+  const [isfilterFrom, setIsFilterFrom] = useState(false);
+  const [isCategory, setIsCategory] = useState(false);
+  const [isPrimary, setIsPrimary] = useState(false);
 
   // Filter `option.label` match the user type `input`
   const filterOption = (input, option) =>
@@ -64,7 +72,239 @@ const AddNewWorkout = ({ setIsOpen }) => {
 
   return (
     <div className="w-full fixed h-screen top-0 left-0 z-50 flex items-center justify-center bg-[#0000006b]">
-      <div className="w-[70%] h-[600px] relative p-6 bg-white flex gap-3 rounded">
+      <div className="w-[80%] h-[700px] relative p-6 bg-white flex gap-3 rounded">
+        {isOpenFilter && (
+          <div className="w-[450px] h-[500px] overflow-y-scroll p-4 bg-white border rounded shadow-sm z-50 absolute top-[13%] left-[25%]">
+            <div className="relative">
+              {/* filter header */}
+              <div className="flex items-center w-full justify-between ">
+                <h3 className=" font-bold text-black text-[1rem]">
+                  Excersice Filter
+                </h3>
+                <p className="text-[#6142ee] text-[0.9rem] cursor-pointer">
+                  Clear All
+                </p>
+              </div>
+
+              {/* filter by Category */}
+              <div className=" my-4">
+                <div
+                  className="flex items-center justify-between w-full cursor-pointer"
+                  onClick={() => setIsFilterFrom(!isfilterFrom)}>
+                  <h3 className="font-semibold text-black text-[0.9rem]">
+                    Exversice From
+                  </h3>
+                  {isfilterFrom ? (
+                    <MdKeyboardArrowUp />
+                  ) : (
+                    <MdOutlineKeyboardArrowDown />
+                  )}
+                </div>
+                {isfilterFrom && (
+                  <div className="flex items-center gap-4 mt-3  text-[0.9rem]  flex-wrap">
+                    <div className="flex items-center gap-1  text-[#000]">
+                      <input type="checkbox" name="Everfit" id="Everfit" />
+                      <label htmlFor="Everfit" className=" select-none">
+                        Everfit
+                      </label>
+                    </div>
+                    <div className="flex items-center gap-1 text-[#000]">
+                      <input
+                        type="checkbox"
+                        name="Custom Excersice"
+                        id="Custom Excersice"
+                      />
+                      <label
+                        htmlFor="Custom Excersice"
+                        className=" select-none">
+                        Custom Excersice
+                      </label>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <hr />
+
+              {/* filter by from */}
+              <div className=" my-4">
+                <div
+                  className="flex items-center justify-between w-full cursor-pointer"
+                  onClick={() => setIsCategory(!isCategory)}>
+                  <h3 className="font-semibold text-black text-[0.9rem]">
+                    Category
+                  </h3>
+                  {isCategory ? (
+                    <MdKeyboardArrowUp />
+                  ) : (
+                    <MdOutlineKeyboardArrowDown />
+                  )}
+                </div>
+                {isCategory && (
+                  <div className="flex items-center gap-4 mt-3  text-[0.9rem] flex-wrap">
+                    <div className="flex items-center gap-1  text-[#000]">
+                      <input type="checkbox" name="Strength" id="Strength" />
+                      <label htmlFor="Strength" className=" select-none">
+                        Strength
+                      </label>
+                    </div>
+                    <div className="flex items-center gap-1 text-[#000]">
+                      <input
+                        type="checkbox"
+                        name="Body Weight"
+                        id="Body Weight"
+                      />
+                      <label htmlFor="Body Weight" className=" select-none">
+                        Body Weight
+                      </label>
+                    </div>
+
+                    <div className="flex items-center gap-1  text-[#000]">
+                      <input type="checkbox" name="Timed" id="Timed" />
+                      <label htmlFor="Timed" className=" select-none">
+                        Timed
+                      </label>
+                    </div>
+
+                    <div className="flex items-center gap-1  text-[#000]">
+                      <input
+                        type="checkbox"
+                        name="Distance (long)"
+                        id="Distance (long)"
+                      />
+                      <label htmlFor="Distance (long)" className=" select-none">
+                        Distance (long)
+                      </label>
+                    </div>
+
+                    <div className="flex items-center gap-1  text-[#000]">
+                      <input
+                        type="checkbox"
+                        name="Distance (short)"
+                        id="Distance (short)"
+                      />
+                      <label
+                        htmlFor="Distance (short)"
+                        className=" select-none">
+                        Distance (short)
+                      </label>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <hr />
+
+              {/* filter by primary focus */}
+              <div className=" my-4">
+                <div
+                  className="flex items-center justify-between w-full cursor-pointer"
+                  onClick={() => setIsPrimary(!isPrimary)}>
+                  <h3 className="font-semibold text-black text-[0.9rem]">
+                    Primary Focus
+                  </h3>
+                  {isPrimary ? (
+                    <MdKeyboardArrowUp />
+                  ) : (
+                    <MdOutlineKeyboardArrowDown />
+                  )}
+                </div>
+                {isPrimary && (
+                  <div className="flex items-center gap-4 mt-3  text-[0.9rem] flex-wrap min-h-[60px] pb-3">
+                    <button className="py-[0.4rem] px-5 text-gray-950  bg-gray-100 rounded-lg">
+                      -
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition duration-200">
+                      Arms
+                    </button>
+
+                    <button className="py-[0.4rem] px-3 text-gray-950  bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-200 cursor-pointer">
+                      Celves
+                    </button>
+                  </div>
+                )}
+              </div>
+              <div className=" sticky bottom-0 right-0 w-full z-40 bg-white pt-3 border-t flex items-end justify-end px-4">
+                <button className="py-2 px-6 bg-[#4473f3] text-[0.9rem] rounded-lg text-white">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <RxCross2
           className=" absolute top-[-2%] right-[-1%] bg-white rounded-full p-[0.3rem] text-[2rem] text-black  cursor-pointer font-bold shadow-md"
           onClick={() => setIsOpen(false)}
@@ -87,10 +327,11 @@ const AddNewWorkout = ({ setIsOpen }) => {
               size={25}
               color="#c4c4c4"
               className=" absolute right-3 top-3 cursor-pointer"
+              onClick={() => setIsOpenFilter(!isOpenFilter)}
             />
           </div>
 
-          <div className="">
+          <div className="" onClick={() => setIsOpenFilter(false)}>
             <p className="text-gray-500 text-[0.7rem] mb-1">
               Most Recent(1230)
             </p>
@@ -195,7 +436,9 @@ const AddNewWorkout = ({ setIsOpen }) => {
         </div>
 
         {/* right side */}
-        <div className="w-[60%] overflow-y-scroll p-4">
+        <div
+          className="w-[60%] overflow-y-scroll p-4"
+          onClick={() => setIsOpenFilter(false)}>
           <div className="flex items-center justify-between w-full mb-5">
             <h1
               contentEditable
@@ -213,9 +456,27 @@ const AddNewWorkout = ({ setIsOpen }) => {
           <div>
             <p className="text-gray-500 text-[0.7rem] mb-1">DESCRIPTION</p>
             <TextArea
-              rows={4}
+              rows={1}
               className="w-full py-2 px-3 border-[1px] mb-5 border-[#c4c4c4] outline-none"
             />
+          </div>
+
+          {/* drag and drop section */}
+          <div className="w-full p-5 border-[3px] border-dotted rounded flex items-center gap-8 justify-center cursor-grab">
+            <img src={Image} alt="image" className="w-[60px]" />
+            <p>
+              Drag exercises from <br /> the left to add
+            </p>
+          </div>
+
+          {/* buttons */}
+          <div className="flex items-center gap-5 justify-between w-full mt-3">
+            <button className="flex items-center gap-3 bg-[#e3e4f8] rounded ouline-none border-none py-3 w-full justify-center text-[#2b2e5c] font-semibold capitalize">
+              <AiOutlinePlus /> add excersice
+            </button>
+            <button className="flex items-center gap-3 bg-[#e3e4f8] rounded ouline-none border-none py-3 w-full justify-center text-[#2b2e5c] font-semibold capitalize">
+              <AiOutlinePlus /> add section
+            </button>
           </div>
         </div>
 
