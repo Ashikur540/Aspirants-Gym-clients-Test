@@ -146,23 +146,20 @@
 
  
 
-import { Button, Dropdown, Menu, Space } from 'antd';
+import { Dropdown } from 'flowbite-react';
 import DataTable from 'react-data-table-component';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { BiSolidDuplicate } from 'react-icons/bi';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 const columns = [
+ 
     {
         name: 'Workouts',
         selector: row => row.workOuts,
         sortable: true,
     },
-    // {
-    //     name: 'Tags',
-    //     selector: row => row.tags,
-    //     sortable: true,
-    // },
+    
     {
         name: 'Exercises',
         selector: row => row.exercises,
@@ -179,30 +176,15 @@ const columns = [
         sortable: true,
     },
     {
-      name: 'Action',
-      cell: (row) => (
-        <Space size="middle">
-          <Dropdown
-            overlay={(
-              <Menu>
-                <Menu.Item key="2">
-                  <div className='flex gap-4 items-center'>
-                    <BiSolidDuplicate /> Duplicate
-                  </div>
-                </Menu.Item>
-                <Menu.Item key="3">
-                  <div className='flex gap-4 items-center'>
-                    <AiOutlineDelete /> Delete
-                  </div>
-                </Menu.Item>
-              </Menu>
-            )}
-          >
-            <Button>
-              <BsThreeDotsVertical />
-            </Button>
-          </Dropdown>
-        </Space>
+      name: "Actions",
+      cell: () => (
+        <div>
+          <Dropdown label={<BsThreeDotsVertical/>} dismissOnClick={false}>
+        <Dropdown.Item><BiSolidDuplicate/>Duplicate</Dropdown.Item>
+        <Dropdown.Item><AiOutlineDelete/>Delete</Dropdown.Item>
+        
+      </Dropdown>
+        </div>
       ),
     },
 ];
